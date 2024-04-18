@@ -28,11 +28,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+<<<<<<< HEAD
   GlobalKey<FormState> formState = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Welcome Page")),
+=======
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      
+>>>>>>> f59bd0aff0f3d2f3e39da8472e33430bbec7a74c
     );
   }
 }
