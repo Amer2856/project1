@@ -6,11 +6,11 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'LeoSphere',
+      debugShowMaterialGrid: false,
+      title: 'LeoSphere', //the title of the app
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -28,8 +28,53 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  GlobalKey<ScaffoldState> scaffoldkey = GlobalKey();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: const Text("Welcome Page")));
+    return Scaffold(
+      key: scaffoldkey,
+      appBar: AppBar(
+        shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        centerTitle: true,
+        elevation: 0.0,
+        title: const Text("Welcome Page"),
+      ),
+      drawer: const Drawer(
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Icon(Icons.person),
+                Expanded(
+                    child: ListTile(
+                  title: Text("Amerhelal"),
+                  subtitle: Text("amerhelal281@gmail.com"),
+                ))
+              ],
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text("homepage"),
+            ),
+            ListTile(
+              leading: Icon(Icons.info),
+              title: Text("Account"),
+            ),
+            ListTile(
+              leading: Icon(Icons.help),
+              title: Text("about us"),
+            ),
+            ListTile(
+              leading: Icon(Icons.phone),
+              title: Text("contact us"),
+            ),
+            ListTile(
+              leading: Icon(Icons.exit_to_app),
+              title: Text("signout"),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
