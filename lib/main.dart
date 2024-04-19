@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,14 +9,10 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowMaterialGrid: false,
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'LeoSphere', //the title of the app
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'LeoSphare'),
+      home: MyHomePage(title: 'LeoSphare'),
     );
   }
 }
@@ -27,54 +24,88 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  GlobalKey<ScaffoldState> scaffoldkey = GlobalKey();
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
+  TabController? tabController; // For the NavigationBar
+  int selecteditem = 0;
+  @override
+  void initState() {
+    tabController = TabController(length: 3 /*Three pages*/, vsync: this);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldkey,
+      backgroundColor: ColorEffect.neutralValue,
       appBar: AppBar(
-        shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        centerTitle: true,
+        backgroundColor: Colors.white,
+        toolbarHeight: 20,
         elevation: 0.0,
-        title: const Text("Welcome Page"),
       ),
-      drawer: const Drawer(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Icon(Icons.person),
-                Expanded(
-                    child: ListTile(
-                  title: Text("Amerhelal"),
-                  subtitle: Text("amerhelal281@gmail.com"),
-                ))
-              ],
-            ),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: Text("homepage"),
-            ),
-            ListTile(
-              leading: Icon(Icons.info),
-              title: Text("Account"),
-            ),
-            ListTile(
-              leading: Icon(Icons.help),
-              title: Text("about us"),
-            ),
-            ListTile(
-              leading: Icon(Icons.phone),
-              title: Text("contact us"),
-            ),
-            ListTile(
-              leading: Icon(Icons.exit_to_app),
-              title: Text("signout"),
-            )
-          ],
-        ),
-      ),
+      bottomNavigationBar: BottomNavigationBar(
+          selectedFontSize: 15.0,
+          selectedItemColor: ColorEffect.neutralValue,
+          selectedIconTheme: IconThemeData(size: 28.0),
+          currentIndex: selecteditem,
+          onTap: (value) {
+            setState(() {
+              selecteditem = value;
+              tabController!.animateTo(selecteditem);
+            });
+          },
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.interests_rounded), label: "Suggestions"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person_rounded), label: "Me")
+          ]),
+      body: TabBarView(controller: tabController, children: const [
+        Text("data"),
+        Text("data"),
+        Text("data")
+        // HERE WE PUT THE ROUTES
+      ]),
     );
   }
 }
+
+// Column(
+//             crossAxisAlignment: CrossAxisAlignment.center,
+//             children: [
+//               MaterialButton(
+//                 onPressed: () {},
+//                 child: const Row(
+//                   children: [
+//                     Icon(Icons.person),
+//                     Expanded(
+//                         child: ListTile(
+//                       title: Text("Amerhelal"),
+//                       subtitle: Text("amerhelal281@gmail.com"),
+//                     ))
+//                   ],
+//                 ),
+//               ),
+//               const ListTile(
+//                 leading: Icon(Icons.home),
+//                 title: Text("homepage"),
+//               ),
+//               const ListTile(
+//                 leading: Icon(Icons.account_box),
+//                 title: Text("Account"),
+//               ),
+//               const ListTile(
+//                 leading: Icon(Icons.help),
+//                 title: Text("about us"),
+//               ),
+//               const ListTile(
+//                 leading: Icon(Icons.phone),
+//                 title: Text("contact us"),
+//               ),
+//               const ListTile(
+//                 leading: Icon(Icons.exit_to_app),
+//                 title: Text("signout"),
+//               )
+//             ],
+//           ),
