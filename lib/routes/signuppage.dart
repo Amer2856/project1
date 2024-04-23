@@ -45,6 +45,7 @@ class SignupState extends State<SignUpPage> {
                             if (value!.isEmpty) {
                               return "it is empty";
                             }
+                            return null;
                           },
                           decoration: InputDecoration(
                               prefixIcon: const Icon(Icons.person),
@@ -60,6 +61,7 @@ class SignupState extends State<SignUpPage> {
                             if (value!.isEmpty) {
                               return "it is empty";
                             }
+                            return null;
                           },
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
@@ -76,6 +78,7 @@ class SignupState extends State<SignUpPage> {
                             if (value!.isEmpty) {
                               return "it is empty";
                             }
+                            return null;
                           },
                           keyboardType: TextInputType.phone,
                           decoration: InputDecoration(
@@ -92,6 +95,7 @@ class SignupState extends State<SignUpPage> {
                             if (value!.isEmpty) {
                               return "it is empty";
                             }
+                            return null;
                           },
                           obscureText: pass,
                           decoration: InputDecoration(

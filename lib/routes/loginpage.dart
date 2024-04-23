@@ -48,6 +48,7 @@ class LoginState extends State<LoginPage> {
                           if (value!.isEmpty) {
                             return "it is empety";
                           }
+                          return null;
                         },
                         decoration: InputDecoration(
                             prefixIcon: const Icon(Icons.email_outlined),
