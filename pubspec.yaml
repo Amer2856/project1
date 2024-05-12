@@ -39,6 +39,7 @@ dependencies:
   flutter_animate: ^4.5.0
   provider: ^6.1.2
   async: ^2.11.0
+  drop_down_list: ^0.0.6
 
 dev_dependencies:
   flutter_test:
@@ -64,9 +65,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - images/travel-traveling-logo-tour-and-travel-logo-design-vector.jpg
+    - images/sorting_icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

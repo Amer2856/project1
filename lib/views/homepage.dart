@@ -1,15 +1,14 @@
-import 'package:flutter/material.dart';
 import 'package:project_one/packages.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({
+class HomePage extends StatefulWidget {
+  const HomePage({
     super.key,
   });
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>
+class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   TabController? tabController; // For the NavigationBar
   int selecteditem = 0;
@@ -24,10 +23,9 @@ class _MyHomePageState extends State<MyHomePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        toolbarHeight: 20,
-        elevation: 0.0,
+        toolbarHeight: 0,
       ),
+      // Navigation bar
       bottomNavigationBar: BottomNavigationBar(
           selectedFontSize: 15.0,
           selectedIconTheme: const IconThemeData(size: 28.0),
@@ -45,9 +43,15 @@ class _MyHomePageState extends State<MyHomePage>
             BottomNavigationBarItem(
                 icon: Icon(Icons.person_rounded), label: "Me")
           ]),
-      body: TabBarView(controller: tabController, children: const [
-        // HERE WE PUT THE ROUTES
-      ]),
+      body: TabBarView(
+          physics: const NeverScrollableScrollPhysics(),
+          controller: tabController,
+          children: const [
+            TripsViewPage(),
+            Text("Suggestions Page"),
+            FormPage()
+            // HERE WE PUT THE ROUTES
+          ]),
     );
   }
 }
