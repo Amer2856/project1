@@ -21,7 +21,7 @@ class _TripsViewPageState extends State<TripsViewPage> {
             const SizedBox(
               height: 60,
             ),
-            // هون ال
+            // HERE IS THE PAGE VIEW
             PageViewWidget(),
             Expanded(
               child: ListView.separated(
