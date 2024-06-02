@@ -20,14 +20,53 @@ class FormPageState extends State<FormPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: Form(
         key: _formKey,
         child: Padding(
-          padding: const EdgeInsets.all(30),
+          padding: EdgeInsets.symmetric(horizontal: context.width / 12),
           child: SingleChildScrollView(
             child: Column(
               children: [
+                const SizedBox(
+                  height: 20,
+                ),
+
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Required Field!";
+                          }
+                        },
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            labelText: "first name"),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Required Field!";
+                          }
+                        },
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            labelText: "last name"),
+                      ),
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
                 // Gender Dropdown
                 DropdownButtonFormField<String>(
                   decoration: InputDecoration(

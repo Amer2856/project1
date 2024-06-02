@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:project_one/packages.dart';
 
 void main() {
@@ -9,7 +10,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        theme: ThemeData.dark(useMaterial3: true),
+        themeMode: ThemeMode.light,
+        theme: ThemeData(colorSchemeSeed: Colors.deepOrangeAccent),
+        darkTheme: ThemeData(
+          brightness: Brightness.dark,
+          colorSchemeSeed: Colors.deepOrangeAccent,
+        ),
         debugShowCheckedModeBanner: false,
         title: 'LeoSphere', //the title of the app
         home: const HomePage());

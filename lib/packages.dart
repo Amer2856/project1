@@ -10,3 +10,5 @@ export 'widgets/searchTextField.dart';
 export 'package:drop_down_list/drop_down_list.dart';
 export 'package:drop_down_list/model/selected_list_item.dart';
 export 'widgets/dropDownList.dart';
+export 'package:project_one/views/passwordrecovory.dart';
+export 'widgets/pageview.dart';
