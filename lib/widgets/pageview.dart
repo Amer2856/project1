@@ -26,7 +26,7 @@ class _PageViewState extends State<PageViewWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
+      height: 250,
       margin: const EdgeInsets.symmetric(vertical: 20),
       child: Scaffold(
         appBar: AppBar(
@@ -41,7 +41,7 @@ class _PageViewState extends State<PageViewWidget> {
               _selectedindex = value;
             });
           },
-          controller: PageController(viewportFraction: 0.7),
+          controller: PageController(viewportFraction: 0.5),
           itemCount: 4,
           itemBuilder: (context, index) {
             var _scale = (_selectedindex == index) ? 1.0 : 0.8;

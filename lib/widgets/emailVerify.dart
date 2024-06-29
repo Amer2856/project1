@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
 import 'package:project_one/controllers/verification.dart';
 import '../packages.dart';
