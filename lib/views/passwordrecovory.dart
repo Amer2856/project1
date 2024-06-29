@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_one/controllers/singup_controlar.dart';
 import 'package:project_one/controllers/verification.dart';
 import 'package:project_one/widgets/emailVerify.dart';
 import 'package:project_one/widgets/person.dart';
@@ -19,23 +20,26 @@ class RecovoryState extends State<Recovory> {
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         child: Column(
           children: [
-            Icon(
+            const Icon(
               Icons.lock_reset,
               size: 165,
               color: Colors.deepOrangeAccent,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Emailverify().v.value,
-            Center(
-                child: Text(
-              "To recover your password, Please enter your email address.",
-              style: TextStyle(color: Colors.deepOrangeAccent, fontSize: 12),
-            ))
+            GetBuilder<SingupControlar>(
+                init: SingupControlar(),
+                builder: (controlar) => Center(
+                        child: Text(
+                      controlar.text,
+                      style: const TextStyle(
+                          color: Colors.deepOrangeAccent, fontSize: 12),
+                    )))
           ],
         ),
       ),

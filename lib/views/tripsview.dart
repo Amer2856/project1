@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//import 'package:project_one/controllers/tripsview_controlar.dart';
 import 'package:project_one/packages.dart';
 import 'package:project_one/widgets/pageview.dart';
 
@@ -12,7 +13,8 @@ class _TripsViewPageState extends State<TripsViewPage> {
   int _selectedindex = 0;
   @override
   Widget build(context) {
-    return Stack(
+    return Scaffold(
+        body: Stack(
       children: [
         // List generator
         Column(
@@ -36,6 +38,7 @@ class _TripsViewPageState extends State<TripsViewPage> {
                     return ListTile(
                       title: Text(
                         // Trip's name
+                        //'${controlar.name}.${index + 1}}',
                         "Trip no. ${index + 1}",
                         style: const TextStyle(
                             fontSize: 14, fontWeight: FontWeight.w400),
@@ -52,6 +55,7 @@ class _TripsViewPageState extends State<TripsViewPage> {
                       ),
                       onTap: () {
                         // Navigator to the Trip's info
+                        //Get.to(() => const tripsinfo())
                       },
                       shape: const OutlineInputBorder(
                           // The Style of the ListTyle
@@ -85,7 +89,9 @@ class _TripsViewPageState extends State<TripsViewPage> {
                           // Login Button
                           IconButton(
                             onPressed: () {
-                              Get.to(() => const LoginPage());
+                              // Get.to(() => const LoginPage());
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => LoginPage()));
                             },
                             icon: const Icon(Icons.login),
                           ),
@@ -110,6 +116,6 @@ class _TripsViewPageState extends State<TripsViewPage> {
               ],
             ))
       ],
-    );
+    ));
   }
 }
