@@ -1,6 +1,5 @@
 import 'package:project_one/controllers/authentication.dart';
 import 'package:project_one/packages.dart';
-import 'package:project_one/widgets/emailVerify.dart';
 import 'package:project_one/widgets/person.dart';
 
 class LoginPage extends StatefulWidget {
@@ -110,7 +109,6 @@ class LoginState extends State<LoginPage> {
                                         fontWeight: FontWeight.w400,
                                         fontSize: 14)),
                               ),
-
                               // Signup Button
                               TextButton(
                                   onPressed: () {

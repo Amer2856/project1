@@ -15,14 +15,18 @@ class _ListItemState extends State<ListItem> {
   @override
   Widget build(BuildContext context) {
     return Slidable(
+        groupTag: SlidableAutoCloseBehavior,
         closeOnScroll: true,
         // Specify a key if the Slidable is dismissible.
-        key: ValueKey(index),
+        key: const ValueKey(0),
         // The end action pane is the one at the right or the bottom side.
         endActionPane: ActionPane(
           extentRatio: 0.3,
-          motion: const BehindMotion(),
+          motion: ScrollMotion(),
           children: [
+            Row(children: [
+              
+            ])
             CustomSlidableAction(
               autoClose: true,
               onPressed: (context) {
@@ -34,10 +38,9 @@ class _ListItemState extends State<ListItem> {
                 );
               },
               foregroundColor: Colors.deepOrangeAccent,
-              child: const Icon(Icons.favorite, size: 30),
+              child: const Center(child: Icon(Icons.favorite, size: 30)),
             ),
             CustomSlidableAction(
-              padding: EdgeInsets.all(10),
               autoClose: true,
               onPressed: (context) {
                 ScaffoldMessenger.of(context).showSnackBar(

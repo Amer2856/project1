@@ -39,6 +39,7 @@ class FormPageState extends State<FormPage> {
                           if (value!.isEmpty) {
                             return "Required Field!";
                           }
+                          return null;
                         },
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
@@ -55,6 +56,7 @@ class FormPageState extends State<FormPage> {
                           if (value!.isEmpty) {
                             return "Required Field!";
                           }
+                          return null;
                         },
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
