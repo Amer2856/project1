@@ -22,40 +22,39 @@ class _ListItemState extends State<ListItem> {
         // The end action pane is the one at the right or the bottom side.
         endActionPane: ActionPane(
           extentRatio: 0.3,
-          motion: ScrollMotion(),
+          motion: const DrawerMotion(),
           children: [
-            Row(children: [
-              
-            ])
-            CustomSlidableAction(
-              autoClose: true,
-              onPressed: (context) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    duration: Duration(milliseconds: 500),
-                    content: Text('Trip Saved'),
-                  ),
-                );
-              },
-              foregroundColor: Colors.deepOrangeAccent,
-              child: const Center(child: Icon(Icons.favorite, size: 30)),
-            ),
-            CustomSlidableAction(
-              autoClose: true,
-              onPressed: (context) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    duration: Duration(milliseconds: 500),
-                    content: Text('Trip Booked'),
-                  ),
-                );
-              },
-              foregroundColor: const Color(0xFF0392CF),
-              child: const Icon(
-                Icons.check_circle,
-                size: 30,
+            Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+              CustomSlidableAction(
+                autoClose: true,
+                onPressed: (context) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      duration: Duration(milliseconds: 500),
+                      content: Text('Trip Saved'),
+                    ),
+                  );
+                },
+                foregroundColor: Colors.deepOrangeAccent,
+                child: const Center(child: Icon(Icons.favorite, size: 30)),
               ),
-            ),
+              CustomSlidableAction(
+                autoClose: true,
+                onPressed: (context) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      duration: Duration(milliseconds: 500),
+                      content: Text('Trip Booked'),
+                    ),
+                  );
+                },
+                foregroundColor: const Color(0xFF0392CF),
+                child: const Icon(
+                  Icons.check_circle,
+                  size: 30,
+                ),
+              ),
+            ])
           ],
         ),
 
