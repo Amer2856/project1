@@ -7,6 +7,7 @@ class ActionsBar extends StatefulWidget {
 }
 
 class _ActionsBarState extends State<ActionsBar> {
+  PageController page = new PageController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,8 +22,33 @@ class _ActionsBarState extends State<ActionsBar> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Builder(builder: (context0) {
-                return Row(
+              child: PageView(
+                controller: page,
+                children: [
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    // Login Button
+                    IconButton(
+                      onPressed: () {
+                        Get.to(() => const LoginPage());
+                      },
+                      icon: const Icon(Icons.login),
+                    ),
+                    // Search Field
+                    const Expanded(child: SearchTextField()),
+                    // Sorting button
+                    IconButton(
+                      icon: Image.asset(
+                        color: Colors.white70,
+                        'images/sorting_icon.png',
+                        scale: 150,
+                      ),
+                      onPressed: () {
+                        page.jumpToPage(1);
+                        // Sorting Options
+                      },
+                    ),
+                  ]),
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // Login Button
@@ -32,8 +58,6 @@ class _ActionsBarState extends State<ActionsBar> {
                         },
                         icon: const Icon(Icons.login),
                       ),
-                      // Search Field
-                      const Expanded(child: SearchTextField()),
                       // Sorting button
                       IconButton(
                         icon: Image.asset(
@@ -45,8 +69,27 @@ class _ActionsBarState extends State<ActionsBar> {
                           // Sorting Options
                         },
                       ),
-                    ]);
-              }),
+                      // Sorting button
+                      IconButton(
+                        icon: const Icon(
+                          Icons.timer_outlined,
+                          size: 150,
+                        ),
+                        onPressed: () {
+                          // Sorting Options
+                        },
+                      ),
+                      // Sorting button
+                      IconButton(
+                        icon: const Icon(Icons.sort_by_alpha, size: 150),
+                        onPressed: () {
+                          // Sorting Options
+                        },
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
             // Filtering Button
             ElevatedButton(onPressed: () {}, child: const Text("Filtering"))
