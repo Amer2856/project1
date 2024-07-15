@@ -1,4 +1,6 @@
 import 'package:project_one/packages.dart';
+import 'package:project_one/views/me.dart';
+import 'package:project_one/views/myTrips.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -46,10 +48,12 @@ class _HomePageState extends State<HomePage>
       body: TabBarView(
           physics: const NeverScrollableScrollPhysics(),
           controller: tabController,
-          children: const [
+          children: [
             TripsViewPage(),
-            Text("Suggestions Page"),
-            FormPage()
+            //Text("Suggestions Page"),
+            Mytrips(),
+            Me()
+            // FormPage()
             // HERE WE PUT THE ROUTES
           ]),
     );
