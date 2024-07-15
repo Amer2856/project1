@@ -1,4 +1,8 @@
 import 'package:project_one/packages.dart';
+import 'package:project_one/views/me.dart';
+import 'package:project_one/views/tripsview1.dart';
+import 'package:project_one/views/myTrips.dart';
+import 'package:project_one/widgets/tripdetails.dart';
 
 void main() {
   runApp(GetMaterialApp(
