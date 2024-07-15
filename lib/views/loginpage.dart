@@ -118,23 +118,6 @@ class LoginState extends State<LoginPage> {
                                           fontSize: 14)),
                                 ),
                               ),
-<<<<<<< HEAD
-
-                              //Signup Button
-                              GetBuilder(
-                                  init: LoginpageControlar(),
-                                  builder: (controlar) => TextButton(
-                                      onPressed: () {
-                                        Get.to(const Signup());
-                                      },
-                                      child: const Text(
-                                        "Don't have an account!",
-                                        style: TextStyle(
-                                            color: Colors.deepOrangeAccent,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 11.5),
-                                      )))
-=======
                               // Signup Button
                               TextButton(
                                   onPressed: () {
@@ -147,7 +130,6 @@ class LoginState extends State<LoginPage> {
                                         fontWeight: FontWeight.w500,
                                         fontSize: 11.5),
                                   ))
->>>>>>> 97f72e42bb6de082c04d6f11cdc1b79249c6cc38
                             ],
                           ),
                         ),

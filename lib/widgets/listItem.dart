@@ -15,16 +15,14 @@ class _ListItemState extends State<ListItem> {
   @override
   Widget build(BuildContext context) {
     return Slidable(
-        groupTag: SlidableAutoCloseBehavior,
         closeOnScroll: true,
         // Specify a key if the Slidable is dismissible.
-        key: const ValueKey(0),
+        key: ValueKey(index),
         // The end action pane is the one at the right or the bottom side.
         endActionPane: ActionPane(
-          extentRatio: 0.3,
-          motion: const DrawerMotion(),
-          children: [
-            Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+            extentRatio: 0.3,
+            motion: const BehindMotion(),
+            children: [
               CustomSlidableAction(
                 autoClose: true,
                 onPressed: (context) {
@@ -36,9 +34,10 @@ class _ListItemState extends State<ListItem> {
                   );
                 },
                 foregroundColor: Colors.deepOrangeAccent,
-                child: const Center(child: Icon(Icons.favorite, size: 30)),
+                child: const Icon(Icons.favorite, size: 30),
               ),
               CustomSlidableAction(
+                padding: EdgeInsets.all(10),
                 autoClose: true,
                 onPressed: (context) {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -53,11 +52,9 @@ class _ListItemState extends State<ListItem> {
                   Icons.check_circle,
                   size: 30,
                 ),
-              ),
-            ])
-          ],
-        ),
-
+              )
+            ]),
+        groupTag: SlidableAutoCloseBehavior,
         // The child of the Slidable is what the user sees when the
         // component is not dragged.
         child: Card(
