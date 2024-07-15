@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 import 'package:flutter/material.dart';
 //import 'package:project_one/controllers/tripsview_controlar.dart';
+=======
+>>>>>>> 97f72e42bb6de082c04d6f11cdc1b79249c6cc38
 import 'package:project_one/packages.dart';
-import 'package:project_one/widgets/pageview.dart';
+import 'package:project_one/widgets/actionsBar.dart';
 
 class TripsViewPage extends StatefulWidget {
   const TripsViewPage({super.key});
@@ -10,13 +13,13 @@ class TripsViewPage extends StatefulWidget {
 }
 
 class _TripsViewPageState extends State<TripsViewPage> {
-  int _selectedindex = 0;
   @override
   Widget build(context) {
     return Scaffold(
         body: Stack(
       children: [
         // List generator
+<<<<<<< HEAD
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -115,6 +118,24 @@ class _TripsViewPageState extends State<TripsViewPage> {
                 ElevatedButton(onPressed: () {}, child: const Text("Filtering"))
               ],
             ))
+=======
+        SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              const SizedBox(
+                height: 60,
+              ),
+              // HERE IS THE PAGE VIEW
+              const PageViewWidget(),
+              ...List.generate(5, (index) {
+                return ListItem(index: index);
+              })
+            ],
+          ),
+        ),
+        const ActionsBar()
+>>>>>>> 97f72e42bb6de082c04d6f11cdc1b79249c6cc38
       ],
     ));
   }

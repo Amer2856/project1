@@ -1,7 +1,6 @@
 import 'package:project_one/controllers/authentication.dart';
 import 'package:project_one/controllers/loginpage_controlar.dart';
 import 'package:project_one/packages.dart';
-import 'package:project_one/widgets/emailVerify.dart';
 import 'package:project_one/widgets/person.dart';
 
 class LoginPage extends StatefulWidget {
@@ -119,6 +118,7 @@ class LoginState extends State<LoginPage> {
                                           fontSize: 14)),
                                 ),
                               ),
+<<<<<<< HEAD
 
                               //Signup Button
                               GetBuilder(
@@ -134,6 +134,20 @@ class LoginState extends State<LoginPage> {
                                             fontWeight: FontWeight.w500,
                                             fontSize: 11.5),
                                       )))
+=======
+                              // Signup Button
+                              TextButton(
+                                  onPressed: () {
+                                    Get.to(const Signup());
+                                  },
+                                  child: const Text(
+                                    "Don't have an account!",
+                                    style: TextStyle(
+                                        color: Colors.deepOrangeAccent,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 11.5),
+                                  ))
+>>>>>>> 97f72e42bb6de082c04d6f11cdc1b79249c6cc38
                             ],
                           ),
                         ),

@@ -32,9 +32,27 @@ class FormPageState extends State<FormPage> {
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
+<<<<<<< HEAD
+=======
+                    Expanded(
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Required Field!";
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            labelText: "first name"),
+                      ),
+                    ),
+>>>>>>> 97f72e42bb6de082c04d6f11cdc1b79249c6cc38
                     const SizedBox(
                       height: 40,
                     ),
+<<<<<<< HEAD
                     GetBuilder<FormControlar>(
                         init: FormControlar(),
                         builder: (controlar) => Row(
@@ -203,6 +221,22 @@ class FormPageState extends State<FormPage> {
                               },
                               child: Text(controlar.submit),
                             )),
+=======
+                    Expanded(
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Required Field!";
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            labelText: "last name"),
+                      ),
+                    )
+>>>>>>> 97f72e42bb6de082c04d6f11cdc1b79249c6cc38
                   ],
                 ),
               ),

@@ -15,6 +15,7 @@ class _ListItemState extends State<ListItem> {
   @override
   Widget build(BuildContext context) {
     return Slidable(
+<<<<<<< HEAD
         closeOnScroll: true,
         // Specify a key if the Slidable is dismissible.
         key: ValueKey(index),
@@ -53,6 +54,48 @@ class _ListItemState extends State<ListItem> {
                 size: 30,
               ),
             ),
+=======
+        groupTag: SlidableAutoCloseBehavior,
+        closeOnScroll: true,
+        // Specify a key if the Slidable is dismissible.
+        key: const ValueKey(0),
+        // The end action pane is the one at the right or the bottom side.
+        endActionPane: ActionPane(
+          extentRatio: 0.3,
+          motion: const DrawerMotion(),
+          children: [
+            Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+              CustomSlidableAction(
+                autoClose: true,
+                onPressed: (context) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      duration: Duration(milliseconds: 500),
+                      content: Text('Trip Saved'),
+                    ),
+                  );
+                },
+                foregroundColor: Colors.deepOrangeAccent,
+                child: const Center(child: Icon(Icons.favorite, size: 30)),
+              ),
+              CustomSlidableAction(
+                autoClose: true,
+                onPressed: (context) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      duration: Duration(milliseconds: 500),
+                      content: Text('Trip Booked'),
+                    ),
+                  );
+                },
+                foregroundColor: const Color(0xFF0392CF),
+                child: const Icon(
+                  Icons.check_circle,
+                  size: 30,
+                ),
+              ),
+            ])
+>>>>>>> 97f72e42bb6de082c04d6f11cdc1b79249c6cc38
           ],
         ),
 

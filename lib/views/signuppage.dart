@@ -1,9 +1,5 @@
-//import 'dart:js';
-
 import 'package:project_one/controllers/verification.dart';
-import 'package:project_one/widgets/emailVerify.dart';
 import 'package:project_one/widgets/person.dart';
-
 import '../packages.dart';
 
 class Signup extends StatefulWidget {
@@ -21,7 +17,7 @@ class SignupState extends State<Signup> {
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         child: Column(
           children: [
             Stack(
@@ -36,8 +32,7 @@ class SignupState extends State<Signup> {
                     ))
               ],
             ),
-            // Obx(() => controller.v.value),
-            const PasswordInput(),
+            Obx(() => controller.v.value),
             //here we put the card
             const Center(
                 child: Text(

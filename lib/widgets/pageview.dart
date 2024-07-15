@@ -26,8 +26,13 @@ class _PageViewState extends State<PageViewWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
+<<<<<<< HEAD
       height: 270,
       // margin: const EdgeInsets.symmetric(vertical: 20),
+=======
+      height: 250,
+      margin: const EdgeInsets.symmetric(vertical: 20),
+>>>>>>> 97f72e42bb6de082c04d6f11cdc1b79249c6cc38
       child: Scaffold(
         appBar: AppBar(
           title: Text(
@@ -37,6 +42,7 @@ class _PageViewState extends State<PageViewWidget> {
                 fontWeight: FontWeight.bold),
           ),
         ),
+<<<<<<< HEAD
         body: Container(
           height: context.height,
           child: PageView.builder(
@@ -71,6 +77,35 @@ class _PageViewState extends State<PageViewWidget> {
                                     fontSize: 14)),
                             Text(
                               banneritems[index].date.toString(),
+=======
+        body: PageView.builder(
+          onPageChanged: (value) {
+            setState(() {
+              _selectedindex = value;
+            });
+          },
+          controller: PageController(viewportFraction: 0.5),
+          itemCount: 4,
+          itemBuilder: (context, index) {
+            var _scale = (_selectedindex == index) ? 1.0 : 0.8;
+            return TweenAnimationBuilder(
+              curve: Curves.ease,
+              tween: Tween(begin: _scale, end: _scale),
+              duration: const Duration(milliseconds: 350),
+              builder: (context, value, child) {
+                return Transform.scale(
+                  scale: value,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage(banneritems[index].img))),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(banneritems[index].name,
+>>>>>>> 97f72e42bb6de082c04d6f11cdc1b79249c6cc38
                               style: TextStyle(
                                   color: Colors.deepOrangeAccent[100],
                                   fontSize: 12),
