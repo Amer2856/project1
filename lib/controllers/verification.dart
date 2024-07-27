@@ -12,9 +12,4 @@ class Emailverify extends GetxController {
       v.value = const EmailInput();
     }
   }
-  // bool v = false;
-  // void sw() {
-  //   v = !v;
-  //   update();
-  //}
 }

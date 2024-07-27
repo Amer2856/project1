@@ -1,6 +1,7 @@
 import 'package:project_one/packages.dart';
-import 'package:project_one/views/me.dart';
-import 'package:project_one/views/myTrips.dart';
+
+import 'me.dart';
+import 'myTrips.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -41,20 +42,20 @@ class _HomePageState extends State<HomePage>
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.interests_rounded), label: "Suggestions"),
+                icon: Icon(Icons.interests_rounded), label: "My Trips"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.person_rounded), label: "Me")
           ]),
       body: TabBarView(
           physics: const NeverScrollableScrollPhysics(),
           controller: tabController,
-          children: [
-            TripsViewPage(),
-            //Text("Suggestions Page"),
+          children: const [
+            // First page (recommendations and browsing available trips)
+            Tripsview(),
+            // Second page (booked trips & favourited trips view)
             Mytrips(),
+            // third page (personal)
             Me()
-            // FormPage()
-            // HERE WE PUT THE ROUTES
           ]),
     );
   }

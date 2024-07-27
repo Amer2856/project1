@@ -84,7 +84,7 @@ class VerificationCodeInput extends StatefulWidget {
 class _VerificationCodeInputState extends State<VerificationCodeInput> {
   final Emailverify controller = Get.put(Emailverify());
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context0) {
     return Card(
         margin: const EdgeInsets.all(30),
         child: Padding(
@@ -105,13 +105,22 @@ class _VerificationCodeInputState extends State<VerificationCodeInput> {
                   fullBorder: true,
                   onCompleted: (code) {
                     print(code);
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const FormPage()));
                   },
                   onEditing: (c) {}),
               const SizedBox(
                 height: 20,
               ),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      duration: Duration(milliseconds: 500),
+                      content: Text('code sent'),
+                    ),
+                  );
+                },
                 child: const Text(
                   "Resend Code?",
                   style: TextStyle(color: Colors.deepOrangeAccent),

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import '../packages.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
@@ -21,9 +23,12 @@ class _ListItemState extends State<ListItem> {
         // The end action pane is the one at the right or the bottom side.
         endActionPane: ActionPane(
             extentRatio: 0.3,
-            motion: const BehindMotion(),
+            motion: const ScrollMotion(),
             children: [
               CustomSlidableAction(
+                padding: const EdgeInsets.all(0),
+                backgroundColor: context.theme.scaffoldBackgroundColor,
+                // backgroundColor: context.theme.scaffoldBackgroundColor,
                 autoClose: true,
                 onPressed: (context) {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -37,7 +42,8 @@ class _ListItemState extends State<ListItem> {
                 child: const Icon(Icons.favorite, size: 30),
               ),
               CustomSlidableAction(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(0),
+                backgroundColor: context.theme.scaffoldBackgroundColor,
                 autoClose: true,
                 onPressed: (context) {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -48,9 +54,13 @@ class _ListItemState extends State<ListItem> {
                   );
                 },
                 foregroundColor: const Color(0xFF0392CF),
-                child: const Icon(
-                  Icons.check_circle,
-                  size: 30,
+                child: const Expanded(
+                  child: Center(
+                    child: Icon(
+                      Icons.check_circle,
+                      size: 30,
+                    ),
+                  ),
                 ),
               )
             ]),
@@ -70,18 +80,26 @@ class _ListItemState extends State<ListItem> {
               "welcome to our trip",
               style: TextStyle(fontSize: 12, fontWeight: FontWeight.w300),
             ),
-            leading: Image.asset(
-              // Trip's image
-              'images/travel-traveling-logo-tour-and-travel-logo-design-vector.jpg',
+            leading: SizedBox(
+              width: 75,
+              height: 75,
+              child: Image.asset(
+                fit: BoxFit.fill,
+                // Trip's image
+                'images/img${index + 1}.jpg',
+              ),
             ),
             trailing: const Expanded(
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "3.4",
-                      style: TextStyle(color: Colors.white),
-                    ),
+                    Text.rich(TextSpan(text: "3.4 ", children: [
+                      WidgetSpan(
+                          child: Icon(
+                        Icons.star,
+                        size: 14,
+                      ))
+                    ])),
                     Text("0.5 \$")
                   ]),
             ),

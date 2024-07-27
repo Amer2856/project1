@@ -1,36 +1,47 @@
+import 'package:project_one/controllers/tripsview_controlar.dart';
 import 'package:project_one/packages.dart';
 import 'package:project_one/widgets/actionsBar.dart';
 
-class TripsViewPage extends StatefulWidget {
-  const TripsViewPage({super.key});
+class Tripsview extends StatefulWidget {
+  const Tripsview({super.key});
+
   @override
-  State<TripsViewPage> createState() => _TripsViewPageState();
+  State<Tripsview> createState() => _Tripsview1State();
 }
 
-class _TripsViewPageState extends State<TripsViewPage> {
+class _Tripsview1State extends State<Tripsview> {
   @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
     return Scaffold(
-        body: Stack(
-      children: [
-        // List generator
-        SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              const SizedBox(
-                height: 60,
-              ),
-              // HERE IS THE PAGE VIEW
-              const PageViewWidget(),
-              ...List.generate(5, (index) {
-                return ListItem(index: index);
-              })
-            ],
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          GetBuilder<TripsviewController>(
+              init: TripsviewController(),
+              builder: (controller) => const ActionsBar()),
+          GetBuilder<TripsviewController>(
+              init: TripsviewController(),
+              builder: (controller) => const PageViewWidget()),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: ListView.separated(
+                  itemCount: 3,
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(height: 10);
+                  },
+                  itemBuilder: (context, index) {
+                    // List tile of the trip
+                    return GetBuilder<TripsviewController>(
+                        init: TripsviewController(),
+                        builder: (controller) => ListItem(
+                              index: index,
+                            ));
+                  }),
+            ),
           ),
-        ),
-        const ActionsBar()
-      ],
-    ));
+        ],
+      ),
+    );
   }
 }

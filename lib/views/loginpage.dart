@@ -58,7 +58,7 @@ class LoginState extends State<LoginPage> {
                                     borderRadius: BorderRadius.circular(20))),
                           ),
                         )),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Padding(
@@ -141,7 +141,7 @@ class LoginState extends State<LoginPage> {
                             onTap: () {
                               if (form.currentState!.validate()) {
                                 // check the login information
-                                Login(email!, password!);
+                                // Login(email!, password!);
                                 // get to the home page
                                 Get.offAll(() => const HomePage());
                               }

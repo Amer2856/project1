@@ -1,12 +1,10 @@
 import 'package:project_one/packages.dart';
-import 'package:project_one/views/me.dart';
-import 'package:project_one/views/tripsview1.dart';
-import 'package:project_one/views/myTrips.dart';
-import 'package:project_one/widgets/tripdetails.dart';
 
+GlobalKey appkey = GlobalKey();
 void main() {
   runApp(GetMaterialApp(
-      themeMode: ThemeMode.light,
+      key: appkey,
+      themeMode: (darktheme) ? ThemeMode.dark : ThemeMode.light,
       theme: ThemeData(colorSchemeSeed: Colors.deepOrangeAccent),
       darkTheme: ThemeData(
         brightness: Brightness.dark,

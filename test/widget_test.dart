@@ -7,10 +7,11 @@
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:project_one/packages.dart';
+import 'package:project_one/widgets/actionsBar.dart';
 
 void main() {
   testWidgets('', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const HomePage());
+    await tester.pumpWidget(const ActionsBar());
   });
 }

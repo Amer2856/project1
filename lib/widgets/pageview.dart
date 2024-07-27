@@ -8,10 +8,10 @@ class BannerItem {
 }
 
 List<BannerItem> banneritems = [
-  BannerItem("bab tuma", "images/img1.jpg", DateTime(2024, 06, 12)),
-  BannerItem("shahba", "images/img2.jpg", DateTime(2024, 06, 10)),
-  BannerItem("jaramana", "images/img3.jpg", DateTime(2024, 06, 25)),
-  BannerItem("aleppo", "images/img4.jpg", DateTime(2024, 06, 06)),
+  BannerItem("Trip no. 2", "images/img2.jpg", DateTime(2024, 06, 10)),
+  BannerItem("Trip no. 3", "images/img3.jpg", DateTime(2024, 06, 25)),
+  BannerItem("Trip no. 1", "images/img1.jpg", DateTime(2024, 06, 12)),
+  BannerItem("Trip no. 4", "images/img4.jpg", DateTime(2024, 06, 06)),
 ];
 
 class PageViewWidget extends StatefulWidget {
@@ -25,7 +25,7 @@ class _PageViewState extends State<PageViewWidget> {
   int _selectedindex = 0;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 270,
       // margin: const EdgeInsets.symmetric(vertical: 20),
       child: Scaffold(
@@ -63,17 +63,33 @@ class _PageViewState extends State<PageViewWidget> {
                               fit: BoxFit.cover,
                               image: AssetImage(banneritems[index].img))),
                       child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(banneritems[index].name,
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20)),
+                              padding: EdgeInsets.all(5),
+                              margin: EdgeInsets.all(10),
+                              child: Text(
+                                banneritems[index].date.toString(),
                                 style: TextStyle(
                                     color: Colors.deepOrangeAccent[100],
-                                    fontSize: 14)),
-                            Text(
-                              banneritems[index].date.toString(),
-                              style: TextStyle(
-                                  color: Colors.deepOrangeAccent[100],
-                                  fontSize: 12),
+                                    fontSize: 14),
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20)),
+                              padding: EdgeInsets.all(10),
+                              margin: EdgeInsets.all(10),
+                              child: Text(banneritems[index].name,
+                                  style: TextStyle(
+                                      fontStyle: FontStyle.italic,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.deepOrangeAccent[100],
+                                      fontSize: 20)),
                             )
                           ]),
                     ),

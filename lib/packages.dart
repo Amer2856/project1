@@ -13,3 +13,4 @@ export 'widgets/dropDownList.dart';
 export 'package:project_one/views/passwordrecovory.dart';
 export 'widgets/pageview.dart';
 export 'widgets/listItem.dart';
+export 'views/me.dart';
