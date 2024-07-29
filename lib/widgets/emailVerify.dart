@@ -1,5 +1,5 @@
 import 'package:flutter_verification_code/flutter_verification_code.dart';
-import 'package:project_one/controllers/singup_controlar.dart';
+import 'package:project_one/controllers/singup_controller.dart';
 import 'package:project_one/controllers/verification.dart';
 import '../packages.dart';
 
@@ -24,8 +24,8 @@ class _EmailInputState extends State<EmailInput> {
             padding: const EdgeInsets.all(40),
             child: Form(
                 key: emailinput,
-                child: GetBuilder<SingupControlar>(
-                  init: SingupControlar(),
+                child: GetBuilder<SingupController>(
+                  init: SingupController(),
                   builder: (controlar) => TextFormField(
                     keyboardType: TextInputType.emailAddress,
                     validator: (email) {
@@ -160,8 +160,8 @@ class _PasswordInputState extends State<PasswordInput> {
               const SizedBox(height: 40),
               Padding(
                   padding: const EdgeInsets.only(right: 80, left: 10),
-                  child: GetBuilder<SingupControlar>(
-                    init: SingupControlar(),
+                  child: GetBuilder<SingupController>(
+                    init: SingupController(),
                     builder: (controlar) => TextFormField(
                       onChanged: (value) {
                         controlar.pass();
@@ -197,8 +197,8 @@ class _PasswordInputState extends State<PasswordInput> {
               const SizedBox(height: 20),
               Padding(
                   padding: const EdgeInsets.only(right: 80, left: 10),
-                  child: GetBuilder<SingupControlar>(
-                    init: SingupControlar(),
+                  child: GetBuilder<SingupController>(
+                    init: SingupController(),
                     builder: (controlar) => TextFormField(
                       keyboardType: TextInputType.visiblePassword,
                       validator: (pass) {
@@ -244,8 +244,8 @@ class _PasswordInputState extends State<PasswordInput> {
                         Get.to(() => const HomePage());
                       }
                     },
-                    child: GetBuilder<SingupControlar>(
-                      init: SingupControlar(),
+                    child: GetBuilder<SingupController>(
+                      init: SingupController(),
                       builder: (controlar) => Container(
                         alignment: Alignment.center,
                         decoration: const BoxDecoration(

@@ -1,6 +1,4 @@
-import 'package:project_one/main.dart';
 import 'package:project_one/packages.dart';
-import 'package:image_picker/image_picker.dart';
 
 class Me extends StatefulWidget {
   const Me({super.key});
@@ -69,6 +67,7 @@ class _MeState extends State<Me> {
                   const SizedBox(
                     height: 20,
                   ),
+                  // theme change button
                   Card(
                       child: ListTile(
                     leading: const Icon(
@@ -97,6 +96,7 @@ class _MeState extends State<Me> {
                   const SizedBox(
                     height: 20,
                   ),
+                  // account deletion button
                   Card(
                       child: ListTile(
                     leading: const Icon(

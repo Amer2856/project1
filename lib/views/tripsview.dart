@@ -1,4 +1,4 @@
-import 'package:project_one/controllers/tripsview_controlar.dart';
+import 'package:project_one/controllers/tripsview_controller.dart';
 import 'package:project_one/packages.dart';
 import 'package:project_one/widgets/actionsBar.dart';
 
@@ -22,24 +22,26 @@ class _Tripsview1State extends State<Tripsview> {
           GetBuilder<TripsviewController>(
               init: TripsviewController(),
               builder: (controller) => const PageViewWidget()),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: ListView.separated(
-                  itemCount: 3,
-                  separatorBuilder: (context, index) {
-                    return const SizedBox(height: 10);
-                  },
-                  itemBuilder: (context, index) {
-                    // List tile of the trip
-                    return GetBuilder<TripsviewController>(
-                        init: TripsviewController(),
-                        builder: (controller) => ListItem(
-                              index: index,
-                            ));
-                  }),
-            ),
-          ),
+          GetBuilder<TripsviewController>(
+              init: TripsviewController(),
+              builder: (controller) => Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: ListView.separated(
+                          itemCount: 3,
+                          separatorBuilder: (context, index) {
+                            return const SizedBox(height: 10);
+                          },
+                          itemBuilder: (context, index) {
+                            // List tile of the trip
+                            return GetBuilder<TripsviewController>(
+                                init: TripsviewController(),
+                                builder: (controller) => ListItem(
+                                      index: index,
+                                    ));
+                          }),
+                    ),
+                  ))
         ],
       ),
     );

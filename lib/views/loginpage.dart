@@ -1,5 +1,5 @@
 import 'package:project_one/controllers/authentication.dart';
-import 'package:project_one/controllers/loginpage_controlar.dart';
+import 'package:project_one/controllers/loginpage_controller.dart';
 import 'package:project_one/packages.dart';
 import 'package:project_one/widgets/person.dart';
 

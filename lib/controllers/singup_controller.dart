@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_one/packages.dart';
 
-class SingupControlar extends GetxController {
+class SingupController extends GetxController {
   String lable = "Password";
   String lable2 = "Confirm password";
   String login = "Login";
