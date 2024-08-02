@@ -26,7 +26,7 @@ class _EmailInputState extends State<EmailInput> {
                 key: emailinput,
                 child: GetBuilder<SingupController>(
                   init: SingupController(),
-                  builder: (controlar) => TextFormField(
+                  builder: (controller) => TextFormField(
                     keyboardType: TextInputType.emailAddress,
                     validator: (email) {
                       if (email!.isEmpty) {
@@ -44,7 +44,7 @@ class _EmailInputState extends State<EmailInput> {
                     },
                     decoration: InputDecoration(
                         prefixIcon: const Icon(Icons.email_outlined),
-                        labelText: controlar.lable3,
+                        labelText: "Email",
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20))),
                   ),
@@ -67,12 +67,10 @@ class _EmailInputState extends State<EmailInput> {
 }
 
 class VerificationCodeInput extends StatefulWidget {
-  final void Function(String) onCompleted; // Callback for completed code
   final int length; // Number of digits in the code
   final bool autoFocus; // Whether to focus on the first field automatically
 
   const VerificationCodeInput({
-    required this.onCompleted,
     this.length = 6,
     this.autoFocus = true,
   });
@@ -84,7 +82,7 @@ class VerificationCodeInput extends StatefulWidget {
 class _VerificationCodeInputState extends State<VerificationCodeInput> {
   final Emailverify controller = Get.put(Emailverify());
   @override
-  Widget build(BuildContext context0) {
+  Widget build(BuildContext context) {
     return Card(
         margin: const EdgeInsets.all(30),
         child: Padding(
@@ -105,8 +103,7 @@ class _VerificationCodeInputState extends State<VerificationCodeInput> {
                   fullBorder: true,
                   onCompleted: (code) {
                     print(code);
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const FormPage()));
+                    controller.change();
                   },
                   onEditing: (c) {}),
               const SizedBox(
@@ -152,117 +149,105 @@ class _PasswordInputState extends State<PasswordInput> {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-      child: Form(
-          key: form,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(height: 40),
-              Padding(
-                  padding: const EdgeInsets.only(right: 80, left: 10),
-                  child: GetBuilder<SingupController>(
-                    init: SingupController(),
-                    builder: (controlar) => TextFormField(
-                      onChanged: (value) {
-                        controlar.pass();
-                        // passConfirm = value;
-                      },
-                      keyboardType: TextInputType.visiblePassword,
-                      validator: (pass) {
-                        if (pass!.isEmpty) {
-                          return "Please enter a password";
-                        } else {
-                          password = pass;
-                          return null;
-                        }
-                      },
-                      obscureText: _obscure,
-                      decoration: InputDecoration(
-                          prefixIcon: const Icon(Icons.lock_outlined),
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                _obscure = !_obscure;
-                              });
-                            },
-                            icon: Icon(_obscure
-                                ? Icons.visibility_off
-                                : Icons.visibility),
-                          ),
-                          labelText: controlar.lable,
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20))),
-                    ),
-                  )),
-              const SizedBox(height: 20),
-              Padding(
-                  padding: const EdgeInsets.only(right: 80, left: 10),
-                  child: GetBuilder<SingupController>(
-                    init: SingupController(),
-                    builder: (controlar) => TextFormField(
-                      keyboardType: TextInputType.visiblePassword,
-                      validator: (pass) {
-                        if (pass!.isEmpty) {
-                          return "Please enter a password";
-                        } else {
-                          password = pass;
-                          if (pass != passConfirm) {
-                            return 'there is no Match!';
-                          } else
-                            return null;
-                        }
-                      },
-                      obscureText: _obscure,
-                      decoration: InputDecoration(
-                          prefixIcon: const Icon(Icons.lock_outlined),
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                _obscure = !_obscure;
-                              });
-                            },
-                            icon: Icon(_obscure
-                                ? Icons.visibility_off
-                                : Icons.visibility),
-                          ),
-                          labelText: controlar.lable2,
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20))),
-                    ),
-                  )),
-              const SizedBox(
-                height: 45,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 190, bottom: 30),
-                child: InkWell(
-                    borderRadius: BorderRadius.circular(20),
-                    onTap: () {
-                      if (form.currentState!.validate()) {
-                        // check the login information
-                        // get to the home page
-                        Get.to(() => const HomePage());
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Form(
+            key: form,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 40),
+                GetBuilder<SingupController>(
+                  init: SingupController(),
+                  builder: (controller) => TextFormField(
+                    onChanged: (value) {
+                      controller.pass();
+                      // passConfirm = value;
+                    },
+                    keyboardType: TextInputType.visiblePassword,
+                    validator: (pass) {
+                      if (pass!.isEmpty) {
+                        return "Please enter a password";
+                      } else {
+                        password = pass;
+                        return null;
                       }
                     },
-                    child: GetBuilder<SingupController>(
-                      init: SingupController(),
-                      builder: (controlar) => Container(
-                        alignment: Alignment.center,
-                        decoration: const BoxDecoration(
-                            color: Colors.deepOrangeAccent,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20))),
-                        height: 60,
-                        width: 100,
-                        child: Text(
-                          "${controlar.login}",
-                          style: const TextStyle(color: Colors.white),
+                    obscureText: _obscure,
+                    decoration: InputDecoration(
+                        prefixIcon: const Icon(Icons.lock_outlined),
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              _obscure = !_obscure;
+                            });
+                          },
+                          icon: Icon(_obscure
+                              ? Icons.visibility_off
+                              : Icons.visibility),
                         ),
-                      ),
-                    )),
-              ),
-            ],
-          )),
+                        labelText: "Password",
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20))),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                GetBuilder<SingupController>(
+                  init: SingupController(),
+                  builder: (controller) => TextFormField(
+                    keyboardType: TextInputType.visiblePassword,
+                    validator: (pass) {
+                      if (pass!.isEmpty) {
+                        return "Please enter a password";
+                      } else {
+                        if (pass != password) {
+                          return 'there is no Match!';
+                        }
+                      }
+                      return null;
+                    },
+                    obscureText: _obscure,
+                    decoration: InputDecoration(
+                        prefixIcon: const Icon(Icons.lock_outlined),
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              _obscure = !_obscure;
+                            });
+                          },
+                          icon: Icon(_obscure
+                              ? Icons.visibility_off
+                              : Icons.visibility),
+                        ),
+                        labelText: "Confirm password",
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20))),
+                  ),
+                ),
+                const SizedBox(
+                  height: 45,
+                ),
+                MaterialButton(
+                  height: 60,
+                  color: Colors.deepOrangeAccent,
+                  onPressed: () {
+                    if (form.currentState!.validate()) {
+                      Get.offAll(HomePage());
+                    }
+                  },
+                  shape: ContinuousRectangleBorder(
+                      borderRadius: BorderRadius.circular(50)),
+                  child: const Text(
+                    "Submit",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+              ],
+            )),
+      ),
     );
   }
 }

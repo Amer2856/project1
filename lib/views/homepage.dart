@@ -1,6 +1,4 @@
 import 'package:project_one/packages.dart';
-
-import 'me.dart';
 import 'myTrips.dart';
 
 class HomePage extends StatefulWidget {

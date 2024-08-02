@@ -1,15 +1,17 @@
 import 'package:project_one/controllers/tripsview_controller.dart';
 import 'package:project_one/packages.dart';
 import 'package:project_one/widgets/actionsBar.dart';
+import '../controllers/actionbar_controller.dart';
 
 class Tripsview extends StatefulWidget {
   const Tripsview({super.key});
 
   @override
-  State<Tripsview> createState() => _Tripsview1State();
+  State<Tripsview> createState() => _TripsviewState();
 }
 
-class _Tripsview1State extends State<Tripsview> {
+class _TripsviewState extends State<Tripsview> {
+  final Bar controller = Get.put(Bar());
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,15 +1,10 @@
+import 'package:project_one/controllers/homepagecontroller.dart';
 import 'package:project_one/packages.dart';
 
-class Me extends StatefulWidget {
+final Homepagecontroller controller = Get.put(Homepagecontroller());
+
+class Me extends StatelessWidget {
   const Me({super.key});
-
-  @override
-  State<Me> createState() => _MeState();
-}
-
-bool darktheme = false;
-
-class _MeState extends State<Me> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -67,32 +62,38 @@ class _MeState extends State<Me> {
                   const SizedBox(
                     height: 20,
                   ),
-                  // theme change button
-                  Card(
-                      child: ListTile(
-                    leading: const Icon(
-                      Icons.color_lens_outlined,
-                      color: Colors.deepOrangeAccent,
-                    ),
-                    title: const Text(
-                      "Dark Theme",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.deepOrangeAccent),
-                    ),
-                    trailing: Switch(
-                        value: darktheme,
-                        onChanged: (val) {
-                          setState(() {
-                            darktheme = val;
-                          });
-                        }),
-                    onTap: () {
-                      setState(() {
-                        darktheme = !darktheme;
-                      });
-                    },
-                  )),
+                  Obx(() =>
+                      // theme change button
+                      Card(
+                          child: ListTile(
+                        leading: const Icon(
+                          Icons.color_lens_outlined,
+                          color: Colors.deepOrangeAccent,
+                        ),
+                        title: const Text(
+                          "Dark Theme",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.deepOrangeAccent),
+                        ),
+                        trailing: Switch(
+                            value: controller.darktheme.value,
+                            onChanged: (val) {
+                              (val)
+                                  ? Get.changeThemeMode(ThemeMode.dark)
+                                  : Get.changeThemeMode(ThemeMode.light);
+                              controller.darktheme.value = val;
+                            }),
+                        onTap: () {
+                          if (Get.isDarkMode) {
+                            Get.changeThemeMode(ThemeMode.light);
+                          } else {
+                            Get.changeThemeMode(ThemeMode.dark);
+                          }
+                          controller.darktheme.value =
+                              !controller.darktheme.value;
+                        },
+                      ))),
                   const SizedBox(
                     height: 20,
                   ),

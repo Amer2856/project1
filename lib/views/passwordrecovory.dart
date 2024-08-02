@@ -1,15 +1,10 @@
 import 'package:project_one/controllers/verification.dart';
 import '../packages.dart';
 
-class Recovory extends StatefulWidget {
-  const Recovory({super.key});
+class Recovory extends StatelessWidget {
+  final Emailverify controller = Get.put(Emailverify());
+  Recovory({super.key});
 
-  @override
-  State<Recovory> createState() => RecovoryState();
-}
-
-class RecovoryState extends State<Recovory> {
-  String? email;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,12 +21,14 @@ class RecovoryState extends State<Recovory> {
             const SizedBox(
               height: 20,
             ),
-            Obx(() => Emailverify().v.value),
-            const Center(
-                child: Text(
-              "To recover your password, Please enter your email address.",
-              style: TextStyle(color: Colors.deepOrangeAccent, fontSize: 12),
-            ))
+            Obx(() => controller.v.value),
+            Center(child: GetX<Emailverify>(builder: (controller) {
+              return Text(
+                controller.r.value,
+                style: const TextStyle(
+                    color: Colors.deepOrangeAccent, fontSize: 12),
+              );
+            }))
           ],
         ),
       ),

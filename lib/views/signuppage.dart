@@ -2,16 +2,12 @@ import 'package:project_one/controllers/verification.dart';
 import 'package:project_one/widgets/person.dart';
 import '../packages.dart';
 
-class Signup extends StatefulWidget {
-  const Signup({super.key});
+String? email;
 
-  @override
-  State<Signup> createState() => SignupState();
-}
+class Signup extends StatelessWidget {
+  // final Emailverify controller = Get.put(Emailverify());
+  Signup({super.key});
 
-class SignupState extends State<Signup> {
-  final Emailverify controller = Get.put(Emailverify());
-  String? email;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,13 +28,17 @@ class SignupState extends State<Signup> {
                     ))
               ],
             ),
-            Obx(() => controller.v.value),
+            GetX<Emailverify>(
+                init: Emailverify(),
+                builder: (controller) => controller.v.value),
             //here we put the card
-            const Center(
-                child: Text(
-              "Please enter your email address.",
-              style: TextStyle(color: Colors.deepOrangeAccent, fontSize: 12),
-            ))
+            Center(child: GetX<Emailverify>(builder: (controller) {
+              return Text(
+                controller.t.value,
+                style: const TextStyle(
+                    color: Colors.deepOrangeAccent, fontSize: 12),
+              );
+            })),
           ],
         ),
       ),

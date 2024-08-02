@@ -15,3 +15,4 @@ export 'widgets/pageview.dart';
 export 'widgets/listItem.dart';
 export 'views/me.dart';
 export 'package:image_picker/image_picker.dart';
+export 'core/api/api_consumer.dart';
